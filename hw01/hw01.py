@@ -1,4 +1,5 @@
 from operator import add, sub
+from re import I
 
 def a_plus_abs_b(a, b):
     """Return a+abs(b), but without calling abs.
@@ -9,9 +10,9 @@ def a_plus_abs_b(a, b):
     5
     """
     if b < 0:
-        f = _____
+        f = sub
     else:
-        f = _____
+        f = add
     return f(a, b)
 
 def two_of_three(a, b, c):
@@ -27,7 +28,7 @@ def two_of_three(a, b, c):
     >>> two_of_three(5, 5, 5)
     50
     """
-    return _____
+    return max(a,b)**2 + max(b, c)**2
 
 def largest_factor(n):
     """Return the largest factor of n that is smaller than n.
@@ -39,7 +40,14 @@ def largest_factor(n):
     >>> largest_factor(13) # factor is 1 since 13 is prime
     1
     """
-    "*** YOUR CODE HERE ***"
+    i=1
+    factor = 0
+    while(i < n):
+        if n % i == 0:
+            factor = i
+        i = i+1
+    return factor
+
 
 def if_function(condition, true_result, false_result):
     """Return true_result if condition is a true value, and
@@ -74,13 +82,13 @@ def with_if_function():
     return if_function(c(), t(), f())
 
 def c():
-    "*** YOUR CODE HERE ***"
+    return False
 
 def t():
-    "*** YOUR CODE HERE ***"
+    return print(1)
 
 def f():
-    "*** YOUR CODE HERE ***"
+    return print(2)
 
 def hailstone(n):
     """Print the hailstone sequence starting at n and return its
@@ -97,4 +105,19 @@ def hailstone(n):
     >>> a
     7
     """
-    "*** YOUR CODE HERE ***"
+    print(n)
+    length = 1
+    while n != 1:
+        if n == 1:
+            print(1)
+            length = length + 1
+            return length
+        if n % 2 == 0:
+            print(n / 2)
+            length = length + 1
+            n = n / 2
+        else: 
+            print(n * 3 + 1)
+            length = length + 1
+            n = n * 3 + 1
+    return length
